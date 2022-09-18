@@ -22,7 +22,7 @@ script:
   # - docker-compose push
 
 before_deploy:
-  - docker login -u "$DOCKER_USERNAME" -p $DOCKER_PASSWORD
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
 
 deploy:
   - docker images ps
