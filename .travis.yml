@@ -17,10 +17,11 @@ script:
   - docker --version
   - docker-compose --version
   - docker-compose build --parallel
+  - docker iamges ps
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push ahmedsamir89get/reverseproxy
-  - docker push ahmedsamir89get/udagram-api-user
-  - docker push ahmedsamir89get/udagram-api-feed
-  - docker push ahmedsamir89get/udagram-frontend
+  - docker push $DOCKER_USERNAME/reverseproxy
+  - docker push $DOCKER_USERNAME/udagram-api-user
+  - docker push $DOCKER_USERNAME/udagram-api-feed
+  - docker push $DOCKER_USERNAME/udagram-frontend
