@@ -18,8 +18,15 @@ script:
   - docker-compose --version
   - docker-compose build --parallel
   - docker images ps
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  # - docker login -u "$DOCKER_USERNAME" -p $DOCKER_PASSWORD
+  # - docker-compose push
+
+before_deploy:
+  - docker login -u "$DOCKER_USERNAME" -p $DOCKER_PASSWORD
+
+deploy:
+  - docker images ps
   - docker-compose push
 
 after_success:
-  - echo "this is after sucess"
+  - echo "this is after"
