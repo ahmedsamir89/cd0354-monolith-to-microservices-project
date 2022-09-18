@@ -30,6 +30,7 @@ import {V0_USER_MODELS} from './controllers/v0/model.index';
       'Origin', 'X-Requested-With',
       'Content-Type', 'Accept',
       'X-Access-Token', 'Authorization',
+      'x-Request-Id'
     ],
     methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
     preflightContinue: true,
@@ -37,9 +38,12 @@ import {V0_USER_MODELS} from './controllers/v0/model.index';
   }));
 
   app.use((req, res, next)=> {
-    console.log(req.params);
-    let pid = uuidv4();
-    console.log(new Date().toLocaleString() + `: ${pid} - User requested for resource (`+ req.originalUrl +`)  with method:  ` + req.method);
+    let reqId = req.header('x-request-id');
+    if(reqId) {
+      console.log(new Date().toLocaleString() + `: [RequestID: ${reqId}]  - User requested for resource (`+ req.originalUrl +`)  with method:  ` + req.method);
+    } else {
+      console.log(new Date().toLocaleString() + `: [RequestID: No ReqId detected]  - User requested for resource (`+ req.originalUrl +`)  with method:  ` + req.method);
+    } 
     next();
   });
 

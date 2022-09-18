@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest, HttpEvent } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
+import { v4 as uuidv4 } from 'uuid';
 
 const API_HOST = environment.apiHost;
 
@@ -10,7 +11,7 @@ const API_HOST = environment.apiHost;
 })
 export class ApiService {
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+    headers: new HttpHeaders({'Content-Type': 'application/json', 'x-Request-Id': uuidv4()})
   };
 
   token: string;

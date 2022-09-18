@@ -28,11 +28,22 @@ import {V0_FEED_MODELS} from './controllers/v0/model.index';
       'Origin', 'X-Requested-With',
       'Content-Type', 'Accept',
       'X-Access-Token', 'Authorization',
+      'x-Request-Id'
     ],
     methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
     preflightContinue: true,
     origin: '*',
   }));
+
+  app.use((req, res, next)=> {
+    let reqId = req.header('x-request-id');
+    if(reqId) {
+      console.log(new Date().toLocaleString() + `: [RequestID: ${reqId}]  - Feed requested for resource (`+ req.originalUrl +`)  with method:  ` + req.method);
+    } else {
+      console.log(new Date().toLocaleString() + `: [RequestID: No ReqId detected]  - requested requested for resource (`+ req.originalUrl +`)  with method:  ` + req.method);
+    } 
+    next();
+  });
 
   app.use('/api/v0/', IndexRouter);
 
