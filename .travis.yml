@@ -17,9 +17,8 @@ script:
   - docker --version
   - docker-compose --version
   - docker-compose build --parallel
+
+after_success:
   - docker images
   - docker login -u "$DOCKER_USERNAME" -p $DOCKER_PASSWORD
   - docker-compose push
-
-after_success:
-  - echo "this is after"
