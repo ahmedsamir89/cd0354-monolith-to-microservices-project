@@ -14,6 +14,7 @@ import {V0_USER_MODELS} from './controllers/v0/model.index';
   
 
   console.debug("Initialize database connection...");
+  console.debug(config);
   await sequelize.sync();
 
   const { v4: uuidv4 } = require('uuid');
