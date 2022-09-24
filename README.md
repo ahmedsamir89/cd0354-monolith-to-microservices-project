@@ -1,6 +1,4 @@
-[![Build Status](https://app.travis-ci.com/ahmedsamir89/cd0354-monolith-to-microservices-project.svg?branch=main)](https://app.travis-ci.com/ahmedsamir89/cd0354-monolith-to-microservices-project)
-
-![GitHub last commit](https://img.shields.io/github/last-commit/ahmedsamir89/cd0354-monolith-to-microservices-project)
+[![Build Status](https://app.travis-ci.com/ahmedsamir89/cd0354-monolith-to-microservices-project.svg?branch=main)](https://app.travis-ci.com/ahmedsamir89/cd0354-monolith-to-microservices-project) ![GitHub last commit](https://img.shields.io/github/last-commit/ahmedsamir89/cd0354-monolith-to-microservices-project)
 
 # Udagram Image Filtering Application
 
